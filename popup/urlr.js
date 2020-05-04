@@ -1,5 +1,6 @@
 var url = "";
 var input = document.getElementById("url");
+var button = document.getElementById("reduce-button");;
 var copied_msg = document.getElementById("copied-msg");
 var error_msg = document.getElementById("error-msg");
 
@@ -7,8 +8,9 @@ function reduceURL(url) {
     fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url))
         .then(response => response.json())
         .then(data => {
-            if (!data.hasOwnProperty('error')) {
+            if (!data.hasOwnProperty("error")) {
                 input.style.display = "block";
+                button.classList.add("disabled");
                 input.value = "https://urlr.me/" + data.code;
                 input.focus();
                 input.select();

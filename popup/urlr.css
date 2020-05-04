@@ -87,6 +87,10 @@ html, body {
     background-color: #1abc9c;
 }
 
+.button.disabled {
+    pointer-events: none;
+}
+
 input {
     display: none;
     width: 200px;
