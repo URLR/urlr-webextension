@@ -1,0 +1,123 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* START OF STYLES */
+
+html, body {
+    font-size: 14px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #333333;
+}
+
+#popup {
+    padding: 20px;
+    text-align: center;
+}
+
+.logo {
+	display: block;
+    font-family: 'Righteous', sans-serif;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.logo .colored-letter {
+    color: #1abc9c;
+}
+
+.button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 12px 20px;
+    border-radius: 22px;
+    font-weight: bold;
+	text-transform: uppercase;
+    text-decoration: none;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.button:hover {
+    background-color: #1abc9c;
+}
+
+input {
+    display: none;
+    width: 200px;
+	padding: 10px 20px;
+	margin-bottom: 10px;
+	border: 3px solid #b3b3b3;
+	border-radius: 22px;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1abc9c;
+}
+
+#copied-msg, #error-msg {
+    display: none;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+#copied-msg {
+    color: #1abc9c;
+}
+
+#error-msg {
+    color: #e74c3c;
+}
+
+a {
+    color: inherit;
+    font-size: 12px;
+}
