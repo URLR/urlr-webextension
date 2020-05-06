@@ -5,7 +5,7 @@ var copied_msg = document.getElementById("copied-msg");
 var error_msg = document.getElementById("error-msg");
 
 function reduceURL(url) {
-    fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url))
+    fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url) + "-1")
         .then(response => response.json())
         .then(data => {
             if (!data.hasOwnProperty("error")) {
@@ -22,6 +22,12 @@ function reduceURL(url) {
                   });
             }
             else {
+                if (data.error === 0) {
+                    error_msg.textContent = "This link is not valid for us, sorry...";
+                }
+                else if (data.error === 1) {
+                    error_msg.textContent = "The URL is already very short.";
+                }
                 error_msg.style.display = "block";
             }
         })
@@ -31,7 +37,7 @@ function reduceURL(url) {
 }
 
 document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("button")) {
+    if (e.target.id === "reduce-button") {
         browser.tabs.query({ currentWindow: true, active: true }).then((tabs) => {
             let tab = tabs[0]; // Safe to assume there will only be one result
             reduceURL(tab.url);
