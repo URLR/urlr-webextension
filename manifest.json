@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "URLR. - URL Shortener / Reductor of links",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Simple and powerful tool to shorten a URL / web address so that you can share it more easily to your friends or colleagues.",
     "homepage_url": "https://urlr.me",
     "icons": {
