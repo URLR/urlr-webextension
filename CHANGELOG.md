@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3] - 2020-05-07
+
+### Added
+
+- French translation.
+
 ## [1.0.2] - 2020-05-06
 
 ### Added
