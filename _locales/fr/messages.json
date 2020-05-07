@@ -1,0 +1,30 @@
+{
+    "extensionName": {
+        "message": "URLR. - Minimiseur d'URL / Réducteur de liens",
+        "description": "Name of the extension."
+    },
+    "extensionDescription": {
+        "message": "Outil simple et performant servant à raccourcir une URL / adresse web afin de pouvoir la partager plus facilement à vos amis ou vos collègues.",
+        "description": "Description of the extension."
+    },
+    "reduceButton": {
+        "message": "Réduire l'URL de cette page",
+        "description": "Reduce button label"
+    },
+    "copiedMsg": {
+        "message": "Lien copié !",
+        "description": "Message that comes after a link is reduce."
+    },
+    "urlrLink": {
+        "message": "Aller sur urlr.me",
+        "description": "URLR. link at bottom"
+    },
+    "errorNotValid": {
+        "message": "Cette URL n'est pas valide pour nous.",
+        "description": "Error message if the URL is not valid"
+    },
+    "errorTooShort": {
+        "message": "Cette URL est déjà très courte.",
+        "description": "Error message if the URL is too short"
+    }
+}

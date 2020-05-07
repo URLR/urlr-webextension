@@ -1,8 +1,13 @@
 var url = "";
 var input = document.getElementById("url");
-var button = document.getElementById("reduce-button");;
+var reduce_button = document.getElementById("reduce-button");;
 var copied_msg = document.getElementById("copied-msg");
 var error_msg = document.getElementById("error-msg");
+var urlr_link = document.getElementById("urlr-link");
+
+reduce_button.textContent = browser.i18n.getMessage("reduceButton");
+copied_msg.textContent = browser.i18n.getMessage("copiedMsg");
+urlr_link.textContent = browser.i18n.getMessage("urlrLink");
 
 function reduceURL(url) {
     fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url) + "-1")
@@ -10,7 +15,7 @@ function reduceURL(url) {
         .then(data => {
             if (!data.hasOwnProperty("error")) {
                 input.style.display = "block";
-                button.classList.add("disabled");
+                reduce_button.classList.add("disabled");
                 input.value = "https://urlr.me/" + data.code;
                 input.focus();
                 input.select();
@@ -23,10 +28,10 @@ function reduceURL(url) {
             }
             else {
                 if (data.error === 0) {
-                    error_msg.textContent = "This link is not valid for us, sorry...";
+                    error_msg.textContent = browser.i18n.getMessage("errorNotValid");
                 }
                 else if (data.error === 1) {
-                    error_msg.textContent = "The URL is already very short.";
+                    error_msg.textContent = browser.i18n.getMessage("errorTooShort");
                 }
                 error_msg.style.display = "block";
             }
