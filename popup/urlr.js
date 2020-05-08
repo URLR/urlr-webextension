@@ -10,7 +10,7 @@ copied_msg.textContent = browser.i18n.getMessage("copiedMsg");
 urlr_link.textContent = browser.i18n.getMessage("urlrLink");
 
 function reduceURL(url) {
-    fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url) + "-1")
+    fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url))
         .then(response => response.json())
         .then(data => {
             if (!data.hasOwnProperty("error")) {
