@@ -10,7 +10,16 @@ copied_msg.textContent = browser.i18n.getMessage("copiedMsg");
 urlr_link.textContent = browser.i18n.getMessage("urlrLink");
 
 function reduceURL(url) {
-    fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url))
+    locale = browser.i18n.getUILanguage();
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Language", locale);
+    var myInit = {
+        method: 'GET',
+        headers: myHeaders,
+        mode: 'cors',
+        cache: 'default'
+    };
+    fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url), myInit)
         .then(response => response.json())
         .then(data => {
             if (!data.hasOwnProperty("error")) {
