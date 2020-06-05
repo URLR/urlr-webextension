@@ -22,7 +22,6 @@ function reduceURL(url) {
     fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url), myInit)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             if (!data.hasOwnProperty("error")) {
                 input.style.display = "block";
                 reduce_button.classList.add("disabled");
