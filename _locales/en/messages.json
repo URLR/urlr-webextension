@@ -26,6 +26,10 @@
     "errorTooShort": {
         "message": "This URL is already very short.",
         "description": "Error message if the URL is too short"
+    },
+    "unknownOrigin": {
+        "message": "Unknown origin.",
+        "description": "Error message if the the origin of the operation is unknown"
     }
 }
 

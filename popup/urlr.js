@@ -22,6 +22,7 @@ function reduceURL(url) {
     fetch("https://urlr.me/reduce-link/" + encodeURIComponent(url), myInit)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             if (!data.hasOwnProperty("error")) {
                 input.style.display = "block";
                 reduce_button.classList.add("disabled");
@@ -42,11 +43,14 @@ function reduceURL(url) {
                 else if (data.error === 1) {
                     error_msg.textContent = browser.i18n.getMessage("errorTooShort");
                 }
+                else if (data.error === 2) {
+                    error_msg.textContent = browser.i18n.getMessage("unknownOrigin");
+                }
                 error_msg.style.display = "block";
             }
         })
         .catch(err => {
-            console.error(err)
+            console.error(err);
         });
 }
 

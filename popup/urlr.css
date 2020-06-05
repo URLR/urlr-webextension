@@ -81,6 +81,7 @@ html, body {
     text-decoration: none;
     background-color: #333333;
     color: #ffffff;
+    white-space: nowrap;
 }
 
 .button:hover {
