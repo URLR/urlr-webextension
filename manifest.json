@@ -5,7 +5,10 @@
     "description": "__MSG_extensionDescription__",
     "homepage_url": "https://urlr.me",
     "icons": {
-        "48": "icons/urlr-48.png"
+        "16": "icons/urlr-16.png",
+        "32": "icons/urlr-32.png",
+        "48": "icons/urlr-48.png",
+        "128": "icons/urlr-128.png"
     },
     "permissions": [
         "activeTab"
