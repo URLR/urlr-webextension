@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.7] - 2020-06-05
+
+### Fixed
+
+- Add more icons for manifest.
+
 ## [1.0.6] - 2020-06-05
 
 ### Added
