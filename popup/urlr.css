@@ -68,7 +68,7 @@ html, body {
 }
 
 .logo .colored-letter {
-    color: #1abc9c;
+    color: #48aefa;
 }
 
 .button {
@@ -85,7 +85,7 @@ html, body {
 }
 
 .button:hover {
-    background-color: #1abc9c;
+    background-color: #48aefa;
 }
 
 .button.disabled {
@@ -105,7 +105,7 @@ input {
 
 input:focus {
     outline: none;
-    border-color: #1abc9c;
+    border-color: #48aefa;
 }
 
 #copied-msg, #error-msg {
@@ -115,7 +115,7 @@ input:focus {
 }
 
 #copied-msg {
-    color: #1abc9c;
+    color: #48aefa;
 }
 
 #error-msg {
