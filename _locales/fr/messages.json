@@ -7,6 +7,18 @@
         "message": "Outil simple et performant servant à raccourcir une URL / adresse web afin de pouvoir la partager plus facilement à vos amis ou vos collègues.",
         "description": "Description of the extension."
     },
+    "usernameInput": {
+        "message": "Nom d'utilisateur",
+        "description": "Username input placeholder"
+    },
+    "passwordInput": {
+        "message": "Mot de passe",
+        "description": "Password input placeholder"
+    },
+    "loginButton": {
+        "message": "Se connecter",
+        "description": "Login button label"
+    },
     "reduceButton": {
         "message": "Réduire l'URL de cette page",
         "description": "Reduce button label"
@@ -23,12 +35,16 @@
         "message": "Cette URL n'est pas valide pour nous.",
         "description": "Error message if the URL is not valid"
     },
-    "errorTooShort": {
-        "message": "Cette URL est déjà très courte.",
-        "description": "Error message if the URL is too short"
+    "errorIsSpam": {
+        "message": "Cette URL est bloquée pour spam.",
+        "description": "Error message if the URL is spam"
     },
-    "unknownOrigin": {
-        "message": "Origine inconnue.",
-        "description": "Error message if the the origin of the operation is unknown"
+    "errorLimitExceeded": {
+        "message": "Vous avez atteint votre limite horaire.",
+        "description": "Error message if the user has exceeded his hour limit"
+    },
+    "errorUnknown": {
+        "message": "Une erreur s'est produite.",
+        "description": "Unknown error message"
     }
 }

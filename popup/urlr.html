@@ -8,11 +8,19 @@
 <body>
     <div id="popup">
         <span class="logo">URL<span class="colored-letter">R</span>.</span>
-        <a href="#" id="reduce-button" class="button"></a>
-        <input type="text" id="url">
-        <p id="error-msg"></p>
-        <p id="copied-msg"></p>
-        <a id="urlr-link" href="https://urlr.me"></a>
+
+        <div id="login-form">
+            <input type="text" id="username" name="username" placeholder="">
+            <input type="password" id="password" name="password" placeholder="">
+            <button type="submit" id="login-button" class="button"></button>
+        </div>
+        <div id="reduce-form">
+            <button type="button" id="reduce-button" class="button"></button>
+            <input type="text" id="url">
+            <p id="error-msg"></p>
+            <p id="copied-msg"></p>
+            <a id="urlr-link" href="https://urlr.me"></a>
+        </div>
     </div>
 
     <script type="application/javascript" src="../browser-polyfill.min.js"></script>

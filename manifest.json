@@ -11,7 +11,10 @@
         "128": "icons/urlr-128.png"
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "storage",
+        "https://urlr.me/",
+        "https://preprod.urlr.me/"
     ],
     "browser_action": {
         "default_icon": "icons/urlr-32.png",

@@ -71,29 +71,19 @@ html, body {
     color: #48aefa;
 }
 
-.button {
-    display: block;
-    margin-bottom: 10px;
-    padding: 12px 20px;
-    border-radius: 22px;
-    font-weight: bold;
-	text-transform: uppercase;
-    text-decoration: none;
-    background-color: #333333;
-    color: #ffffff;
-    white-space: nowrap;
+a {
+    color: inherit;
+    font-size: 12px;
 }
 
-.button:hover {
-    background-color: #48aefa;
-}
+/* Forms */
 
-.button.disabled {
-    pointer-events: none;
+#login-form, #reduce-form {
+    display: none;
 }
 
 input {
-    display: none;
+    display: block;
     width: 200px;
 	padding: 10px 20px;
 	margin-bottom: 10px;
@@ -108,6 +98,35 @@ input:focus {
     border-color: #48aefa;
 }
 
+.button {
+    display: block;
+    margin: 0 auto 10px auto;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 22px;
+    font-weight: bold;
+	text-transform: uppercase;
+    text-decoration: none;
+    background-color: #333333;
+    color: #ffffff;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #48aefa;
+}
+
+.button.disabled {
+    pointer-events: none;
+}
+
+/* Reduce form */
+
+input#url {
+    display: none;
+}
+
 #copied-msg, #error-msg {
     display: none;
     margin-bottom: 20px;
@@ -120,9 +139,4 @@ input:focus {
 
 #error-msg {
     color: #e74c3c;
-}
-
-a {
-    color: inherit;
-    font-size: 12px;
 }
