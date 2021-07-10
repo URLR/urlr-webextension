@@ -21,12 +21,6 @@ This is the official webextension to easily reduce your links with [urlr.me](htt
 
 [![Foo](data/chrome-badge.png)](https://chrome.google.com/webstore/detail/akaigefigejahbihcinnkagmiajcfifd/publish-accepted?authuser=1&hl=en)
 
-## Donations
-
-Do you like URLR.? Would you like to support its development? Feel free to donate.
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/hposnic)
-
 ## License
 
 GNU GENERAL PUBLIC LICENSE (v3)
