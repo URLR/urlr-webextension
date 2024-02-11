@@ -1,6 +1,6 @@
 {
     "extensionName": {
-        "message": "URLR. - URL Shortener / Reductor of links",
+        "message": "URLR - Link shortener",
         "description": "Name of the extension."
     },
     "extensionDescription": {
@@ -19,6 +19,10 @@
         "message": "Login",
         "description": "Login button label"
     },
+    "loginMsg": {
+        "message": "Invalid credentials",
+        "description": "Error message for login form"
+    },
     "reduceButton": {
         "message": "Reduce the URL of this page",
         "description": "Reduce button label"
@@ -27,24 +31,8 @@
         "message": "Link copied!",
         "description": "Message that comes after a link is reduce."
     },
-    "urlrLink": {
-        "message": "Go to urlr.me",
-        "description": "URLR. link at bottom"
-    },
-    "errorNotValid": {
-        "message": "This URL is not valid for us.",
-        "description": "Error message if the URL is not valid"
-    },
-    "errorIsSpam": {
-        "message": "This URL is blocked for spam.",
-        "description": "Error message if the URL is spam"
-    },
-    "errorLimitExceeded": {
-        "message": "You have reached your hourly limit.",
-        "description": "Error message if the user has exceeded his hour limit"
-    },
-    "errorUnknown": {
+    "error": {
         "message": "An error has occurred.",
-        "description": "Unknown error message"
+        "description": "Error message"
     }
 }

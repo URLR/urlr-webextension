@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - UNRELEASED
+
+### Added
+
+- Back!
+
 ## [1.0.7] - 2020-06-05
 
 ### Fixed
