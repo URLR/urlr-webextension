@@ -33,6 +33,6 @@ And then, run:
 
 ## License
 
-GNU GENERAL PUBLIC LICENSE (v3)
+MIT
 
 **Free Software, Hell Yeah!**
