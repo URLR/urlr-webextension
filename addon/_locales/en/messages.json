@@ -28,7 +28,7 @@
         "description": "Empty message for folders select"
     },
     "shortenButton": {
-        "message": "Reduce the URL of the active page",
+        "message": "Shorten the URL of the active page",
         "description": "Shorten button label"
     },
     "clearCacheButton": {
