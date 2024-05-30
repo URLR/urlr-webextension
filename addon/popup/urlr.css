@@ -165,6 +165,10 @@ select {
     opacity: 0.5;
 }
 
+#login-button {
+    margin-bottom: 20px;
+}
+
 /* Shorten form */
 
 input#url {

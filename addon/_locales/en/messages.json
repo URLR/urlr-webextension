@@ -19,6 +19,10 @@
         "message": "Login",
         "description": "Login button label"
     },
+    "signupButton": {
+        "message": "You do not have a URLR account yet?",
+        "description": "Sign-up button label"
+    },
     "loginMsg": {
         "message": "Invalid credentials",
         "description": "Error message for login form"

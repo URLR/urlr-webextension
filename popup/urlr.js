@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputUsername = document.getElementById('username');
   const inputPassword = document.getElementById('password');
   const loginButton = document.getElementById('login-button');
+  const signupButton = document.getElementById('signup-button');
 
   const shortenForm = document.getElementById('shorten-form');
   const teamSelect = document.getElementById('teams');
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialization
   let token = localStorage.getItem('token');
-  let logged = Boolean(token);
+  const logged = Boolean(token);
 
   // Set translations
   setTranslations();
@@ -37,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Init
   initContext(logged);
 
-  function initContext(logged) {
-    if (logged) {
+  function initContext(isLogged) {
+    if (isLogged) {
       getTeams();
 
       toolbar.classList.remove('d-none');
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputUsername.placeholder = browser.i18n.getMessage('usernameInput');
     inputPassword.placeholder = browser.i18n.getMessage('passwordInput');
     loginButton.textContent = browser.i18n.getMessage('loginButton');
+    signupButton.textContent = browser.i18n.getMessage('signupButton');
     shortenButton.textContent = browser.i18n.getMessage('shortenButton');
     copiedMsg.textContent = browser.i18n.getMessage('copiedMsg');
     clearCacheButton.title = browser.i18n.getMessage('clearCacheButton');
@@ -74,6 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
     teamSelect.addEventListener('change', () => getFolders(teamSelect.value));
     clearCacheButton.addEventListener('click', handleClearCache);
     logoutButton.addEventListener('click', handleLogout);
+
+    const links = document.querySelectorAll('.browser-link');
+    links.forEach((link) => {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        const url = this.href;
+        chrome.tabs.create({ url });
+      });
+    });
   }
 
   async function handleLogin() {
