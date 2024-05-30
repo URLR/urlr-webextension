@@ -31,12 +31,19 @@ And then, run:
 
 `npm run build`
 
-
 ## Packaging
 
 ### Firefox
 
 `make firefox_package`
+
+This will generate a `urlr-firefox.zip` package.
+
+### Firefox
+
+`make chrome_package`
+
+This will generate a `urlr-chrome.zip` package.
 
 ## License
 

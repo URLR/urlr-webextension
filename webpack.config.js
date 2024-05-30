@@ -11,9 +11,10 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin({
-            patterns: [{
-                from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js',
-            }],
+            patterns: [
+                {from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js'},
+                {from: 'manifests/firefox/manifest.json'} // will generate one warning in Chrome about 'browser_specific_settings' key
+            ],
         })
     ],
     mode: 'none',

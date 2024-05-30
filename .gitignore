@@ -2,4 +2,5 @@ web-ext-artifacts
 node_modules
 addon/popup/urlr.js
 addon/browser-polyfill.js
-urlr.zip
+addon/manifest.json
+urlr-*.zip
