@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.1] - 2024-05-31
+
+### Added
+
+- Add Sign-up link on login view.
+
+### Fixed
+- Remove an unused permission.
+
 ## [1.1.0] - 2024-05-30
 
 ### Added
