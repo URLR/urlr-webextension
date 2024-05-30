@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "extensionDescription": {
-        "message": "Outil simple et performant servant à raccourcir une URL / adresse web afin de pouvoir la partager plus facilement à vos amis ou vos collègues.",
+        "message": "L'extension de navigateur pour réduire facilement vos liens avec URLR.",
         "description": "Description of the extension."
     },
     "usernameInput": {
@@ -23,13 +23,25 @@
         "message": "Identifiants invalides",
         "description": "Error message for login form"
     },
-    "reduceButton": {
-        "message": "Réduire l'URL de cette page",
-        "description": "Reduce button label"
+    "selectFolder": {
+        "message": "Dossier",
+        "description": "Empty message for folders select"
+    },
+    "shortenButton": {
+        "message": "Réduire l'URL de la page active",
+        "description": "Shorten button label"
+    },
+    "clearCacheButton": {
+        "message": "Vider le cache",
+        "description": "Clear cache button"
+    },
+    "logoutButton": {
+        "message": "Déconnexion",
+        "description": "Logout button"
     },
     "copiedMsg": {
         "message": "Lien copié !",
-        "description": "Message that comes after a link is reduce."
+        "description": "Message that comes after a link is shorten."
     },
     "error": {
         "message": "Une erreur s'est produite.",

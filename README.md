@@ -3,7 +3,7 @@
 ![Mozilla Add-on](https://img.shields.io/amo/users/urlr?label=Firefox%20users)
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/users/akaigefigejahbihcinnkagmiajcfifd?label=Chrome%20users)
 
-This is the official webextension to easily reduce your links with [urlr.me/en](https://urlr.me).
+The browser extension to easily shorten your links with [urlr.me/en](https://urlr.me).
 
 ## Screenshots
 
@@ -15,11 +15,11 @@ This is the official webextension to easily reduce your links with [urlr.me/en](
 
 ### Mozilla Firefox
 
-[![Foo](data/firefox-badge.png)](https://addons.mozilla.org/en-US/firefox/addon/urlr/)
-    
+[![Firefox](data/firefox-badge.png)](https://addons.mozilla.org/en-US/firefox/addon/urlr/)
+
 ### Google Chrome based browsers
 
-[![Foo](data/chrome-badge.png)](https://chrome.google.com/webstore/detail/akaigefigejahbihcinnkagmiajcfifd/publish-accepted?authuser=1&hl=en)
+[![Google Chrome](data/chrome-badge.png)](https://chrome.google.com/webstore/detail/akaigefigejahbihcinnkagmiajcfifd/publish-accepted?authuser=1&hl=en)
 
 ## Build instructions
 
@@ -30,6 +30,13 @@ Install dependencies:
 And then, run:
 
 `npm run build`
+
+
+## Packaging
+
+### Firefox
+
+`make firefox_package`
 
 ## License
 

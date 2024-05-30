@@ -26,5 +26,10 @@
         "default_title": "URLR",
         "default_popup": "popup/urlr.html"
     },
-    "default_locale": "en"
+    "default_locale": "en",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "contact@urlr.me"
+        }
+    }
 }

@@ -3,26 +3,36 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="urlr.css">
-    <link href="https://fonts.googleapis.com/css?family=Righteous|Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="popup">
-        <a href="https://urlr.me" id="logo">
-            <span class="logo">URL<span class="colored-letter">R</span>.</span>
-        </a>
+        <div id="header">
+            <div id="logo">
+                <a href="https://urlr.me">
+                    <img src="images/urlr.svg" alt="URLR">
+                </a>
+            </div>
+            <div id="toolbar" class="d-none">
+                <a href="#" id="clear-cache-button" title=""><img src="images/refresh-ccw.svg" alt="Clear cache"></a>
+                <a href="#" id="logout-button" title=""><img src="images/log-out.svg" alt="Logout"></a>
+            </div>
+        </div>
 
         <div id="login-form">
             <input type="text" id="username" name="username" placeholder="">
             <input type="password" id="password" name="password" placeholder="">
             <button type="submit" id="login-button" class="button"></button>
-            <p id="login-msg" class="error"></p>
         </div>
-        <div id="reduce-form">
-            <button type="button" id="reduce-button" class="button"></button>
-            <input type="text" id="url">
-            <p id="copied-msg"></p>
-            <p id="error-msg" class="error"></p>
+        <div id="shorten-form" class="d-none">
+            <div id="selects">
+                <select id="teams"></select>
+                <select id="folders"></select>
+            </div>
+            <button type="button" id="shorten-button" class="button"></button>
+            <input type="text" id="url" class="d-none">
         </div>
+        <p id="copied-msg" class="d-none"></p>
+        <p id="error-msg" class="error d-none"></p>
     </div>
 
     <script src="../browser-polyfill.js"></script>

@@ -65,18 +65,32 @@ html, body {
 
 #popup {
     padding: 20px;
-    text-align: center;
 }
 
-#logo {
+#header {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#header #toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#header #toolbar img {
+    height: 16px;
+}
+
+#logo a {
     text-decoration: none;
 }
 
-.logo {
-	display: block;
-    font-family: 'Righteous', sans-serif;
-    margin-bottom: 20px;
-    font-size: 26px;
+#logo img {
+    height: 26px;
 }
 
 .logo .colored-letter {
@@ -90,32 +104,47 @@ a {
 
 /* Forms */
 
-#login-form, #reduce-form {
-    display: none;
+#selects {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+input, select {
+    margin: 0;
+    border: 1px solid #dddddd;
+	border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+	font-family: inherit;
+	font-size: inherit;
+    background-color: #ffffff;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #48aefa;
 }
 
 input {
     display: block;
     width: 200px;
     padding: 10px 15px;
-	margin-bottom: 10px;
-    border: 1px solid #dddddd;
-	border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-	font-family: inherit;
-	font-size: inherit;
 }
 
-input:focus {
-    outline: none;
-    border-color: #48aefa;
+input[type="text"], input[type="password"] {
+    margin-bottom: 10px;
+}
+
+select {
+    padding: 8px 15px;
 }
 
 .button {
     display: block;
-    width: 200px;
+    width: 100%;
     padding: 10px 15px;
-    margin: 0 auto 10px auto;
     border: 1px solid #333333;
     border-radius: 8px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -131,19 +160,20 @@ input:focus {
     background-color: #2b2b2b;
 }
 
-.button.disabled {
+.disabled {
     pointer-events: none;
     opacity: 0.5;
 }
 
-/* Reduce form */
+/* Shorten form */
 
 input#url {
-    display: none;
+    margin-top: 20px;
+    width: 100%;
 }
 
 #copied-msg, .error {
-    display: none;
+    margin-top: 20px;
     font-weight: bold;
 }
 
@@ -153,4 +183,10 @@ input#url {
 
 .error {
     color: #e74c3c;
+}
+
+/* Helpers */
+
+.d-none {
+    display: none !important;
 }

@@ -4,7 +4,7 @@
         "description": "Name of the extension."
     },
     "extensionDescription": {
-        "message": "Simple and powerful tool to shorten a URL / web address so that you can share it more easily to your friends or colleagues.",
+        "message": "The browser extension to easily shorten your links with URLR.",
         "description": "Description of the extension."
     },
     "usernameInput": {
@@ -23,13 +23,25 @@
         "message": "Invalid credentials",
         "description": "Error message for login form"
     },
-    "reduceButton": {
-        "message": "Reduce the URL of this page",
-        "description": "Reduce button label"
+    "selectFolder": {
+        "message": "Folder",
+        "description": "Empty message for folders select"
+    },
+    "shortenButton": {
+        "message": "Reduce the URL of the active page",
+        "description": "Shorten button label"
+    },
+    "clearCacheButton": {
+        "message": "Clear cache",
+        "description": "Clear cache button"
+    },
+    "logoutButton": {
+        "message": "Logout",
+        "description": "Logout button"
     },
     "copiedMsg": {
         "message": "Link copied!",
-        "description": "Message that comes after a link is reduce."
+        "description": "Message that comes after a link is shorten."
     },
     "error": {
         "message": "An error has occurred.",

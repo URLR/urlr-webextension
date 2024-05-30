@@ -2,11 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.1.0] - UNRELEASED
+## [1.1.0] - 2024-05-30
 
 ### Added
 
-- Back!
+- Back in the game!
 
 ## [1.0.7] - 2020-06-05
 
