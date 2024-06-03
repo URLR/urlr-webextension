@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "__MSG_extensionName__",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "__MSG_extensionDescription__",
     "homepage_url": "https://urlr.me/en",
     "icons": {
@@ -11,8 +11,7 @@
         "128": "icons/urlr-128.png"
     },
     "permissions": [
-        "tabs",
-        "storage"
+        "tabs"
     ],
     "host_permissions": [
         "https://urlr.me/"

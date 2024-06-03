@@ -1,7 +1,7 @@
 # urlr-webextension
 
-![Mozilla Add-on](https://img.shields.io/amo/users/urlr?label=Firefox%20users)
-![Chrome Web Store](https://img.shields.io/chrome-web-store/users/akaigefigejahbihcinnkagmiajcfifd?label=Chrome%20users)
+![Mozilla Add-on Users](https://img.shields.io/amo/users/urlr-link-shortener)
+![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/ccbogllncgenkiflgchfkbmihffeamkc)
 
 The browser extension to easily shorten your links with [urlr.me/en](https://urlr.me).
 
@@ -15,11 +15,11 @@ The browser extension to easily shorten your links with [urlr.me/en](https://url
 
 ### Mozilla Firefox
 
-[![Firefox](data/firefox-badge.png)](https://addons.mozilla.org/en-US/firefox/addon/urlr/)
+[![Firefox](data/firefox-badge.png)](https://addons.mozilla.org/firefox/addon/urlr-link-shortener)
 
 ### Google Chrome based browsers
 
-[![Google Chrome](data/chrome-badge.png)](https://chrome.google.com/webstore/detail/akaigefigejahbihcinnkagmiajcfifd/publish-accepted?authuser=1&hl=en)
+[![Google Chrome](data/chrome-badge.png)](https://chromewebstore.google.com/detail/urlr-r%C3%A9ducteur-de-liens/ccbogllncgenkiflgchfkbmihffeamkc)
 
 ## Build instructions
 

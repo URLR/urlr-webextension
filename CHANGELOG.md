@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2] - 2024-05-31
+
+### Fixed
+- Fixed margin issues.
+- Remove an unused permission.
+
 ## [1.1.1] - 2024-05-31
 
 ### Added

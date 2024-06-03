@@ -106,10 +106,15 @@ a {
 
 #selects {
     display: flex;
-    margin-bottom: 20px;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#selects select {
+    flex: 1;
 }
 
 input, select {
@@ -129,7 +134,7 @@ input:focus, select:focus {
 
 input {
     display: block;
-    width: 200px;
+    width: 100%;
     padding: 10px 15px;
 }
 
