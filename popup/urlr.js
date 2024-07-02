@@ -130,12 +130,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function getNewToken() {
     const refreshToken = localStorage.getItem('refreshToken');
-    const accessTokensApi = new AccessTokensApi();
-    const data = await accessTokensApi.refreshAccessToken({
-      refreshAccessTokenRequest: { refreshToken },
-    });
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('refreshToken', data.refreshToken);
+    if (refreshToken) {
+      const accessTokensApi = new AccessTokensApi();
+      const data = await accessTokensApi.refreshAccessToken({
+        refreshAccessTokenRequest: { refreshToken },
+      });
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('refreshToken', data.refreshToken);
+    } else {
+      await handleLogout();
+    }
   }
 
   async function fetchWithRetry(apiCall, ...args) {
