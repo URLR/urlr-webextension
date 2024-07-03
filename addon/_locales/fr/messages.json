@@ -27,6 +27,10 @@
         "message": "Identifiants invalides",
         "description": "Error message for login form"
     },
+    "codeInput": {
+        "message": "Code personnalisé (aléatoire si vide)",
+        "description": "Placeholder for custom code input"
+    },
     "selectFolder": {
         "message": "Dossier",
         "description": "Empty message for folders select"

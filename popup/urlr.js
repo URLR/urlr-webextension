@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const signupButton = document.getElementById('signup-button');
 
   const shortenForm = document.getElementById('shorten-form');
+  const codeInput = document.getElementById('code');
   const teamSelect = document.getElementById('teams');
   const folderSelect = document.getElementById('folders');
   const input = document.getElementById('url');
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inputPassword.placeholder = browser.i18n.getMessage('passwordInput');
     loginButton.textContent = browser.i18n.getMessage('loginButton');
     signupButton.textContent = browser.i18n.getMessage('signupButton');
+    codeInput.placeholder = browser.i18n.getMessage('codeInput');
     shortenButton.textContent = browser.i18n.getMessage('shortenButton');
     copiedMsg.textContent = browser.i18n.getMessage('copiedMsg');
     clearCacheButton.title = browser.i18n.getMessage('clearCacheButton');
@@ -209,7 +211,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       setCachedData(`folders_${teamId}`, data);
     }
-    updateSelect(folderSelect, data.folders, 'name', browser.i18n.getMessage('selectFolder'));
+    if (data.folders.length > 0) {
+      updateSelect(folderSelect, data.folders, 'name', browser.i18n.getMessage('selectFolder'));
+      folderSelect.classList.remove('d-none');
+    } else {
+      folderSelect.classList.add('d-none');
+    }
   }
 
   function updateSelect(selectElement, items, textKey, defaultOptionText) {
@@ -240,6 +247,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (folderSelect.value) {
         createLinkRequest.folderId = folderSelect.value;
+      }
+
+      if (codeInput.value) {
+        createLinkRequest.code = codeInput.value;
       }
 
       return linkApi.createLink({ createLinkRequest });

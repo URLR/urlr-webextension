@@ -27,6 +27,10 @@
         "message": "Invalid credentials",
         "description": "Error message for login form"
     },
+    "codeInput": {
+        "message": "Custom code (random if empty)",
+        "description": "Placeholder for custom code input"
+    },
     "selectFolder": {
         "message": "Folder",
         "description": "Empty message for folders select"

@@ -65,6 +65,7 @@ html, body {
 
 #popup {
     padding: 20px;
+    min-width: 400px;
 }
 
 #header {
