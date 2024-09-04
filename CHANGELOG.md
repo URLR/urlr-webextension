@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2024-09-04
+
+### Fixed
+- Fix state of extension if token is deleted.
+
 ## [1.2.0] - 2024-07-03
 
 ### Added
