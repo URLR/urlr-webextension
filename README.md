@@ -39,7 +39,7 @@ And then, run:
 
 This will generate a `urlr-firefox.zip` package.
 
-### Firefox
+### Chrome
 
 `make chrome_package`
 

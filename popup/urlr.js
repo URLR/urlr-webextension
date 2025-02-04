@@ -202,8 +202,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       setCachedData('teams', data);
     }
-    updateSelect(teamSelect, data.teams, 'name');
-    getFolders(teamSelect.value); // Load folders for the first team
+    if (!data.teams || data.teams.length === 0) {
+      // Masquer les formulaires
+      shortenForm.classList.add('d-none');
+      loginForm.classList.add('d-none');
+  
+      // Afficher un message d'erreur
+      showError('noTeamsFound');
+    } else {
+      shortenForm.classList.remove('d-none');
+      updateSelect(teamSelect, data.teams, 'name');
+      getFolders(teamSelect.value); // Load folders for the first team
+    }
   }
 
   async function getFolders(teamId) {
@@ -276,7 +286,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showError(errorKey) {
-    errorMsg.textContent = browser.i18n.getMessage(errorKey);
+    const message = browser.i18n.getMessage(errorKey);
+    errorMsg.innerHTML = message;
     errorMsg.classList.remove('d-none');
   }
 });

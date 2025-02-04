@@ -54,5 +54,8 @@
     "error": {
         "message": "An error has occurred.",
         "description": "Error message"
+    },
+    "noTeamsFound": {
+        "message": "No teams found.. <a href='https://urlr.me' target='_blank'>Creating a team</a>"
     }
 }
