@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2025-07-24
+
+### Fixed
+- Fix sign up link.
+
 ## [1.2.1] - 2024-09-04
 
 ### Fixed
