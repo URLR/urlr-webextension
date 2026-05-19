@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0] - 2026-05-19
+
+### Changed
+
+- Switched to API v2, which now uses API key authentication instead of username and password.
+
 ## [1.2.2] - 2025-07-24
 
 ### Fixed
