@@ -1,41 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="urlr.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="urlr.css" />
+  </head>
+  <body>
     <div id="popup">
-        <div id="header">
-            <div id="logo">
-                <a href="https://urlr.me" class="browser-link">
-                    <img src="images/urlr.svg" alt="URLR">
-                </a>
-            </div>
-            <div id="toolbar" class="d-none">
-                <a href="#" id="clear-cache-button" title=""><img src="images/refresh-ccw.svg" alt="Clear cache"></a>
-                <a href="#" id="logout-button" title=""><img src="images/log-out.svg" alt="Logout"></a>
-            </div>
+      <div id="header">
+        <div id="logo">
+          <a href="https://urlr.me" class="browser-link">
+            <img src="images/urlr.svg" alt="URLR" />
+          </a>
         </div>
+        <div id="toolbar" class="d-none">
+          <a href="#" id="clear-cache-button" title=""
+            ><img src="images/refresh-ccw.svg" alt="Clear cache"
+          /></a>
+          <a href="#" id="logout-button" title=""
+            ><img src="images/log-out.svg" alt="Logout"
+          /></a>
+        </div>
+      </div>
 
-        <div id="login-form">
-            <input type="text" id="api-key" name="api-key" placeholder="">
-            <button type="submit" id="login-button" class="button"></button>
-            <a href="https://urlr.me/?campaign=register&medium=login&source=webextension" id="signup-button" class="browser-link"></a>
+      <div id="login-form">
+        <input type="text" id="api-key" name="api-key" placeholder="" />
+        <button type="submit" id="login-button" class="button"></button>
+        <a
+          href="https://urlr.me/?campaign=register&medium=login&source=webextension"
+          id="signup-button"
+          class="browser-link"
+        ></a>
+      </div>
+      <div id="shorten-form" class="d-none">
+        <input type="text" name="code" id="code" />
+        <div id="selects">
+          <select id="folders"></select>
         </div>
-        <div id="shorten-form" class="d-none">
-            <input type="text" name="code" id="code">
-            <div id="selects">
-                <select id="folders"></select>
-            </div>
-            <button type="button" id="shorten-button" class="button"></button>
-            <input type="text" id="url" class="d-none">
-        </div>
-        <p id="copied-msg" class="d-none"></p>
-        <p id="error-msg" class="error d-none"></p>
+        <button type="button" id="shorten-button" class="button"></button>
+        <input type="text" id="url" class="d-none" />
+      </div>
+      <p id="copied-msg" class="d-none"></p>
+      <p id="error-msg" class="error d-none"></p>
     </div>
 
     <script src="../browser-polyfill.js"></script>
     <script src="urlr.js"></script>
-</body>
+  </body>
 </html>

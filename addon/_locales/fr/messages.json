@@ -1,54 +1,54 @@
 {
-    "extensionName": {
-        "message": "URLR - Réducteur de liens",
-        "description": "Name of the extension."
-    },
-    "extensionDescription": {
-        "message": "L'extension de navigateur pour réduire facilement vos liens avec URLR.",
-        "description": "Description of the extension."
-    },
-    "apiKeyInput": {
-        "message": "Clé API",
-        "description": "API Key input placeholder"
-    },
-    "loginButton": {
-        "message": "Se connecter",
-        "description": "Login button label"
-    },
-    "signupButton": {
-        "message": "Vous n'avez pas encore de compte URLR ?",
-        "description": "Sign-up button label"
-    },
-    "loginMsg": {
-        "message": "Identifiants invalides",
-        "description": "Error message for login form"
-    },
-    "codeInput": {
-        "message": "Code personnalisé (aléatoire si vide)",
-        "description": "Placeholder for custom code input"
-    },
-    "selectFolder": {
-        "message": "Dossier",
-        "description": "Empty message for folders select"
-    },
-    "shortenButton": {
-        "message": "Réduire l'URL de la page active",
-        "description": "Shorten button label"
-    },
-    "clearCacheButton": {
-        "message": "Vider le cache",
-        "description": "Clear cache button"
-    },
-    "logoutButton": {
-        "message": "Déconnexion",
-        "description": "Logout button"
-    },
-    "copiedMsg": {
-        "message": "Lien copié !",
-        "description": "Message that comes after a link is shorten."
-    },
-    "error": {
-        "message": "Une erreur s'est produite.",
-        "description": "Error message"
-    }
+  "extensionName": {
+    "message": "URLR - Réducteur de liens",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "L'extension de navigateur pour réduire facilement vos liens avec URLR.",
+    "description": "Description of the extension."
+  },
+  "apiKeyInput": {
+    "message": "Clé API",
+    "description": "API Key input placeholder"
+  },
+  "loginButton": {
+    "message": "Se connecter",
+    "description": "Login button label"
+  },
+  "signupButton": {
+    "message": "Vous n'avez pas encore de compte URLR ?",
+    "description": "Sign-up button label"
+  },
+  "loginMsg": {
+    "message": "Identifiants invalides",
+    "description": "Error message for login form"
+  },
+  "codeInput": {
+    "message": "Code personnalisé (aléatoire si vide)",
+    "description": "Placeholder for custom code input"
+  },
+  "selectFolder": {
+    "message": "Dossier",
+    "description": "Empty message for folders select"
+  },
+  "shortenButton": {
+    "message": "Réduire l'URL de la page active",
+    "description": "Shorten button label"
+  },
+  "clearCacheButton": {
+    "message": "Vider le cache",
+    "description": "Clear cache button"
+  },
+  "logoutButton": {
+    "message": "Déconnexion",
+    "description": "Logout button"
+  },
+  "copiedMsg": {
+    "message": "Lien copié !",
+    "description": "Message that comes after a link is shorten."
+  },
+  "error": {
+    "message": "Une erreur s'est produite.",
+    "description": "Error message"
+  }
 }

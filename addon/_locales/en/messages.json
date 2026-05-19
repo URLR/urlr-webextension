@@ -1,54 +1,54 @@
 {
-    "extensionName": {
-        "message": "URLR - Link shortener",
-        "description": "Name of the extension."
-    },
-    "extensionDescription": {
-        "message": "The browser extension to easily shorten your links with URLR.",
-        "description": "Description of the extension."
-    },
-    "apiKeyInput": {
-        "message": "API Key",
-        "description": "API Key input placeholder"
-    },
-    "loginButton": {
-        "message": "Login",
-        "description": "Login button label"
-    },
-    "signupButton": {
-        "message": "You do not have a URLR account yet?",
-        "description": "Sign-up button label"
-    },
-    "loginMsg": {
-        "message": "Invalid credentials",
-        "description": "Error message for login form"
-    },
-    "codeInput": {
-        "message": "Custom code (random if empty)",
-        "description": "Placeholder for custom code input"
-    },
-    "selectFolder": {
-        "message": "Folder",
-        "description": "Empty message for folders select"
-    },
-    "shortenButton": {
-        "message": "Shorten the URL of the active page",
-        "description": "Shorten button label"
-    },
-    "clearCacheButton": {
-        "message": "Clear cache",
-        "description": "Clear cache button"
-    },
-    "logoutButton": {
-        "message": "Logout",
-        "description": "Logout button"
-    },
-    "copiedMsg": {
-        "message": "Link copied!",
-        "description": "Message that comes after a link is shorten."
-    },
-    "error": {
-        "message": "An error has occurred.",
-        "description": "Error message"
-    }
+  "extensionName": {
+    "message": "URLR - Link shortener",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "The browser extension to easily shorten your links with URLR.",
+    "description": "Description of the extension."
+  },
+  "apiKeyInput": {
+    "message": "API Key",
+    "description": "API Key input placeholder"
+  },
+  "loginButton": {
+    "message": "Login",
+    "description": "Login button label"
+  },
+  "signupButton": {
+    "message": "You do not have a URLR account yet?",
+    "description": "Sign-up button label"
+  },
+  "loginMsg": {
+    "message": "Invalid credentials",
+    "description": "Error message for login form"
+  },
+  "codeInput": {
+    "message": "Custom code (random if empty)",
+    "description": "Placeholder for custom code input"
+  },
+  "selectFolder": {
+    "message": "Folder",
+    "description": "Empty message for folders select"
+  },
+  "shortenButton": {
+    "message": "Shorten the URL of the active page",
+    "description": "Shorten button label"
+  },
+  "clearCacheButton": {
+    "message": "Clear cache",
+    "description": "Clear cache button"
+  },
+  "logoutButton": {
+    "message": "Logout",
+    "description": "Logout button"
+  },
+  "copiedMsg": {
+    "message": "Link copied!",
+    "description": "Message that comes after a link is shorten."
+  },
+  "error": {
+    "message": "An error has occurred.",
+    "description": "Error message"
+  }
 }

@@ -5,24 +5,29 @@ All notable changes to this project will be documented in this file.
 ## [1.2.2] - 2025-07-24
 
 ### Fixed
+
 - Fix sign up link.
 
 ## [1.2.1] - 2024-09-04
 
 ### Fixed
+
 - Fix state of extension if token is deleted.
 
 ## [1.2.0] - 2024-07-03
 
 ### Added
+
 - Add custom code support.
 
 ### Fixed
+
 - Fixed width issues.
 
 ## [1.1.2] - 2024-05-31
 
 ### Fixed
+
 - Fixed margin issues.
 - Remove an unused permission.
 
@@ -33,6 +38,7 @@ All notable changes to this project will be documented in this file.
 - Add Sign-up link on login view.
 
 ### Fixed
+
 - Remove an unused permission.
 
 ## [1.1.0] - 2024-05-30
