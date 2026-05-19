@@ -1,7 +1,5 @@
 import {
   Configuration,
-  AccessTokensApi,
-  TeamsApi,
   FoldersApi,
   LinksApi,
 } from 'urlr-js';
@@ -9,14 +7,12 @@ import {
 document.addEventListener('DOMContentLoaded', () => {
   // UI Elements
   const loginForm = document.getElementById('login-form');
-  const inputUsername = document.getElementById('username');
-  const inputPassword = document.getElementById('password');
+  const apiKeyInput = document.getElementById('api-key');
   const loginButton = document.getElementById('login-button');
   const signupButton = document.getElementById('signup-button');
 
   const shortenForm = document.getElementById('shorten-form');
   const codeInput = document.getElementById('code');
-  const teamSelect = document.getElementById('teams');
   const folderSelect = document.getElementById('folders');
   const input = document.getElementById('url');
   const shortenButton = document.getElementById('shorten-button');
@@ -30,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const CACHE_EXPIRATION_TIME = 3600000 * 24; // 24 hours in milliseconds
 
   // Initialization
-  let token = localStorage.getItem('token');
+  let token = localStorage.getItem('apiKey');
   const logged = Boolean(token);
 
   // Set translations
@@ -41,14 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function initContext(isLogged) {
     if (isLogged) {
-      getTeams();
-
+      getFolders();
       toolbar.classList.remove('d-none');
       shortenForm.classList.remove('d-none');
       loginForm.classList.add('d-none');
     } else {
-      inputUsername.value = '';
-      inputPassword.value = '';
+      apiKeyInput.value = '';
 
       toolbar.classList.add('d-none');
       shortenForm.classList.add('d-none');
@@ -61,8 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Functions
   function setTranslations() {
-    inputUsername.placeholder = browser.i18n.getMessage('usernameInput');
-    inputPassword.placeholder = browser.i18n.getMessage('passwordInput');
+    apiKeyInput.placeholder = browser.i18n.getMessage('apiKeyInput');
     loginButton.textContent = browser.i18n.getMessage('loginButton');
     signupButton.textContent = browser.i18n.getMessage('signupButton');
     codeInput.placeholder = browser.i18n.getMessage('codeInput');
@@ -75,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function addEventListeners() {
     loginButton.addEventListener('click', handleLogin);
     shortenButton.addEventListener('click', handleShorten);
-    teamSelect.addEventListener('change', () => getFolders(teamSelect.value));
     clearCacheButton.addEventListener('click', handleClearCache);
     logoutButton.addEventListener('click', handleLogout);
 
@@ -90,12 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function handleLogin() {
-    const username = inputUsername.value;
-    const password = inputPassword.value;
     try {
-      await getToken(username, password);
-      getTeams();
-    } catch (error) {
+      await saveApiKey(apiKeyInput.value);
+      getFolders();
+    } catch {
       showError('loginMsg');
     }
   }
@@ -104,64 +94,32 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const [tab] = await browser.tabs.query({ currentWindow: true, active: true });
       await shortenUrl(tab.url);
-    } catch (error) {
+    } catch {
       showError('error');
     }
   }
 
   async function handleClearCache() {
     clearCache();
-    await getTeams();
+    await getFolders();
   }
 
   async function handleLogout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('apiKey');
     initContext(false);
   }
 
-  async function getToken(username, password) {
-    const accessTokensApi = new AccessTokensApi();
-    const data = await accessTokensApi.createAccessToken({
-      createAccessTokenRequest: { username, password },
-    });
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('refreshToken', data.refreshToken);
+  async function saveApiKey(apiKey) {
+    localStorage.setItem('apiKey', apiKey);
     initContext(true);
   }
 
-  async function getNewToken() {
-    const refreshToken = localStorage.getItem('refreshToken');
-    if (refreshToken) {
-      try {
-        const accessTokensApi = new AccessTokensApi();
-        const data = await accessTokensApi.refreshAccessToken({
-          refreshAccessTokenRequest: { refreshToken },
-        });
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('refreshToken', data.refreshToken);
-      } catch (error) {
-        await handleLogout();
-      }
-    } else {
-      await handleLogout();
-    }
-  }
-
-  async function fetchWithRetry(apiCall, ...args) {
-    token = localStorage.getItem('token');
-    let configuration = new Configuration({ accessToken: token });
-    try {
-      return await apiCall(configuration, ...args);
-    } catch (error) {
-      if (error.name === 'ResponseError') {
-        await getNewToken();
-        token = localStorage.getItem('token');
-        configuration = new Configuration({ accessToken: token });
-        return apiCall(configuration, ...args);
-      }
-      throw error;
-    }
+  async function fetchApi(apiCall, ...args) {
+    const apiKey = localStorage.getItem('apiKey');
+    let configuration = new Configuration({
+      apiKey: apiKey,
+    });
+    return await apiCall(configuration, ...args);
   }
 
   function getCachedData(key) {
@@ -184,39 +142,29 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function clearCache() {
-    localStorage.removeItem('teams');
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key.startsWith('folders_')) {
-        localStorage.removeItem(key);
-      }
-    }
+    localStorage.removeItem('folders');
   }
 
-  async function getTeams() {
-    let data = getCachedData('teams');
-    if (!data) {
-      data = await fetchWithRetry((config) => {
-        const teamApi = new TeamsApi(config);
-        return teamApi.getTeams();
-      });
-      setCachedData('teams', data);
-    }
-    updateSelect(teamSelect, data.teams, 'name');
-    getFolders(teamSelect.value); // Load folders for the first team
-  }
+  async function getFolders() {
+    let data = getCachedData(`folders`);
 
-  async function getFolders(teamId) {
-    let data = getCachedData(`folders_${teamId}`);
     if (!data) {
-      data = await fetchWithRetry((config) => {
+      data = await fetchApi((config) => {
         const folderApi = new FoldersApi(config);
-        return folderApi.getFolders({ teamId });
+        return folderApi.folderList();
       });
-      setCachedData(`folders_${teamId}`, data);
+
+      setCachedData(`folders`, data);
     }
+
     if (data.folders.length > 0) {
-      updateSelect(folderSelect, data.folders, 'name', browser.i18n.getMessage('selectFolder'));
+      updateSelect(
+        folderSelect,
+        data.folders,
+        'name',
+        browser.i18n.getMessage('selectFolder')
+      );
+
       folderSelect.classList.remove('d-none');
     } else {
       folderSelect.classList.add('d-none');
@@ -242,22 +190,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function shortenUrl(url) {
-    const data = await fetchWithRetry((config) => {
+    const data = await fetchApi((config) => {
       const linkApi = new LinksApi(config);
-      const createLinkRequest = {
+      const linkCreateRequest = {
         url,
-        teamId: teamSelect.value,
       };
 
       if (folderSelect.value) {
-        createLinkRequest.folderId = folderSelect.value;
+        linkCreateRequest.folderId = folderSelect.value;
       }
 
       if (codeInput.value) {
-        createLinkRequest.code = codeInput.value;
+        linkCreateRequest.code = codeInput.value;
       }
 
-      return linkApi.createLink({ createLinkRequest });
+      return linkApi.linkCreate({ linkCreateRequest });
     });
     displayShortenedUrl(data);
   }
@@ -266,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
     input.value = `${data.domain}/${data.code}`;
     input.classList.remove('d-none');
     shortenButton.classList.add('disabled');
-    teamSelect.classList.add('disabled');
     folderSelect.classList.add('disabled');
     input.focus();
     input.select();

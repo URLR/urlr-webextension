@@ -9,7 +9,7 @@
   "license": "MIT",
   "author": "URLR <contact@urlr.me> (https://urlr.me/en)",
   "dependencies": {
-    "urlr-js": "^3.0.2"
+    "urlr-js": "^3.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

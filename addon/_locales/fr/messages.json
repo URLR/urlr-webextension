@@ -7,13 +7,9 @@
         "message": "L'extension de navigateur pour réduire facilement vos liens avec URLR.",
         "description": "Description of the extension."
     },
-    "usernameInput": {
-        "message": "Nom d'utilisateur",
-        "description": "Username input placeholder"
-    },
-    "passwordInput": {
-        "message": "Mot de passe",
-        "description": "Password input placeholder"
+    "apiKeyInput": {
+        "message": "Clé API",
+        "description": "API Key input placeholder"
     },
     "loginButton": {
         "message": "Se connecter",

@@ -9,12 +9,14 @@ CHROME_PACKAGE := urlr-chrome.zip
 
 # Targets
 firefox_package:
+	npm run build
 	rm -f $(ADDON_MANIFEST)
 	cp $(FIREFOX_MANIFEST) $(ADDON_MANIFEST)
 	cd $(ADDON_DIR) && zip -r -FS ../$(FIREFOX_PACKAGE) *
 	rm -f $(ADDON_MANIFEST)
 
 chrome_package:
+	npm run build
 	rm -f $(ADDON_MANIFEST)
 	cp $(CHROME_MANIFEST) $(ADDON_MANIFEST)
 	cd $(ADDON_DIR) && zip -r -FS ../$(CHROME_PACKAGE) *

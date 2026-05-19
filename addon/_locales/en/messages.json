@@ -7,13 +7,9 @@
         "message": "The browser extension to easily shorten your links with URLR.",
         "description": "Description of the extension."
     },
-    "usernameInput": {
-        "message": "Username",
-        "description": "Username input placeholder"
-    },
-    "passwordInput": {
-        "message": "Password",
-        "description": "Password input placeholder"
+    "apiKeyInput": {
+        "message": "API Key",
+        "description": "API Key input placeholder"
     },
     "loginButton": {
         "message": "Login",
