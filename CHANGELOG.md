@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2026-10-27
+
+### Added
+
+- GitHub Actions CI running lint, formatting check and build.
+
+### Changed
+
+- Update deps.
+- Store the API key in `browser.storage.local` instead of `localStorage` (the
+  key is migrated automatically on update).
+- Show API error details (e.g. an already taken custom code) instead of a
+  generic error message.
+- Allow logging in by pressing Enter in the API key input.
+- Use the `browser` polyfill consistently instead of `chrome.tabs`.
+- Translate the toolbar buttons alt texts.
+
+### Fixed
+
+- Clear cached folders on login and logout to avoid showing folders of a previously logged account.
+- Validate the API key against the API before switching to the shorten view.
+- Reset the shorten button state between shortens, so multiple links can be shortened in one popup session.
+- Clear previous error and copied messages between actions.
+- Handle corrupted cache entries and clipboard failures gracefully.
+
 ## [2.1.0] - 2026-08-10
 
 ### Changed
