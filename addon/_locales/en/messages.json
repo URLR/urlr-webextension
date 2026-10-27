@@ -47,6 +47,10 @@
     "message": "Link copied!",
     "description": "Message that comes after a link is shorten."
   },
+  "invalidUrl": {
+    "message": "This page cannot be shortened.",
+    "description": "Error message when the active page is not a valid URL"
+  },
   "error": {
     "message": "An error has occurred.",
     "description": "Error message"

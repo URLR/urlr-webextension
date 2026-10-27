@@ -47,6 +47,10 @@
     "message": "Lien copié !",
     "description": "Message that comes after a link is shorten."
   },
+  "invalidUrl": {
+    "message": "Cette page ne peut pas être réduite.",
+    "description": "Error message when the active page is not a valid URL"
+  },
   "error": {
     "message": "Une erreur s'est produite.",
     "description": "Error message"

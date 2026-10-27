@@ -1,6 +1,6 @@
 import { Configuration, FoldersApi, LinksApi } from "urlr-js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // UI Elements
   const loginForm = document.getElementById("login-form");
   const apiKeyInput = document.getElementById("api-key");
@@ -21,19 +21,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const CACHE_EXPIRATION_TIME = 3600000 * 24; // 24 hours in milliseconds
 
+  // One-time migration of the API key from localStorage (<= 2.1.1)
+  // to browser.storage.local.
+  await migrateApiKey();
+
   // Initialization
-  let token = localStorage.getItem("apiKey");
-  const logged = Boolean(token);
+  const logged = Boolean(await getApiKey());
 
   // Set translations
   setTranslations();
 
   // Init
   initContext(logged);
+  if (logged) {
+    getFolders().catch(() => showError("error"));
+  }
 
   function initContext(isLogged) {
+    hideMessages();
+
     if (isLogged) {
-      getFolders();
       toolbar.classList.remove("d-none");
       shortenForm.classList.remove("d-none");
       loginForm.classList.add("d-none");
@@ -59,10 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
     copiedMsg.textContent = browser.i18n.getMessage("copiedMsg");
     clearCacheButton.title = browser.i18n.getMessage("clearCacheButton");
     logoutButton.title = browser.i18n.getMessage("logoutButton");
+
+    document.querySelector("#clear-cache-button img").alt =
+      browser.i18n.getMessage("clearCacheButton");
+    document.querySelector("#logout-button img").alt =
+      browser.i18n.getMessage("logoutButton");
   }
 
   function addEventListeners() {
-    loginButton.addEventListener("click", handleLogin);
+    loginForm.addEventListener("submit", handleLogin);
     shortenButton.addEventListener("click", handleShorten);
     clearCacheButton.addEventListener("click", handleClearCache);
     logoutButton.addEventListener("click", handleLogout);
@@ -72,50 +84,95 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", function (event) {
         event.preventDefault();
         const url = this.href;
-        chrome.tabs.create({ url });
+        browser.tabs.create({ url });
       });
     });
   }
 
-  async function handleLogin() {
-    try {
-      await saveApiKey(apiKeyInput.value);
-      getFolders();
-    } catch {
+  async function getApiKey() {
+    const { apiKey } = await browser.storage.local.get("apiKey");
+    return apiKey;
+  }
+
+  async function migrateApiKey() {
+    const legacyApiKey = localStorage.getItem("apiKey");
+
+    if (legacyApiKey) {
+      const currentApiKey = await getApiKey();
+      if (!currentApiKey) {
+        await browser.storage.local.set({ apiKey: legacyApiKey });
+      }
+      localStorage.removeItem("apiKey");
+    }
+  }
+
+  async function handleLogin(event) {
+    event.preventDefault();
+    hideMessages();
+
+    const apiKey = apiKeyInput.value.trim();
+    if (!apiKey) {
       showError("loginMsg");
+      return;
+    }
+
+    loginButton.disabled = true;
+
+    try {
+      await browser.storage.local.set({ apiKey });
+      clearCache();
+      await getFolders();
+      initContext(true);
+    } catch {
+      await browser.storage.local.remove("apiKey");
+      showError("loginMsg");
+    } finally {
+      loginButton.disabled = false;
     }
   }
 
   async function handleShorten() {
+    hideMessages();
+    shortenButton.disabled = true;
+
     try {
       const [tab] = await browser.tabs.query({
         currentWindow: true,
         active: true,
       });
+
+      if (!/^https?:\/\//i.test(tab.url ?? "")) {
+        showError("invalidUrl");
+        return;
+      }
+
       await shortenUrl(tab.url);
-    } catch {
-      showError("error");
+    } catch (error) {
+      const detail = await getApiErrorMessage(error);
+      if (detail) {
+        showRawError(detail);
+      } else {
+        showError("error");
+      }
+    } finally {
+      shortenButton.disabled = false;
     }
   }
 
   async function handleClearCache() {
     clearCache();
-    await getFolders();
+    await getFolders().catch(() => showError("error"));
   }
 
-  async function handleLogout() {
-    localStorage.removeItem("apiKey");
+  function handleLogout() {
+    browser.storage.local.remove("apiKey");
+    clearCache();
     initContext(false);
   }
 
-  async function saveApiKey(apiKey) {
-    localStorage.setItem("apiKey", apiKey);
-    initContext(true);
-  }
-
   async function fetchApi(apiCall, ...args) {
-    const apiKey = localStorage.getItem("apiKey");
-    let configuration = new Configuration({
+    const apiKey = await getApiKey();
+    const configuration = new Configuration({
       apiKey: apiKey,
     });
     return await apiCall(configuration, ...args);
@@ -123,12 +180,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getCachedData(key) {
     const cached = localStorage.getItem(key);
+
     if (cached) {
-      const { timestamp, data } = JSON.parse(cached);
-      if (Date.now() - timestamp < CACHE_EXPIRATION_TIME) {
-        return data;
+      try {
+        const { timestamp, data } = JSON.parse(cached);
+        if (Date.now() - timestamp < CACHE_EXPIRATION_TIME) {
+          return data;
+        }
+        localStorage.removeItem(key);
+      } catch {
+        localStorage.removeItem(key);
       }
     }
+
     return null;
   }
 
@@ -145,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function getFolders() {
-    let data = getCachedData(`folders`);
+    let data = getCachedData("folders");
 
     if (!data) {
       data = await fetchApi((config) => {
@@ -153,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return folderApi.folderList();
       });
 
-      setCachedData(`folders`, data);
+      setCachedData("folders", data);
     }
 
     if (data.folders.length > 0) {
@@ -211,17 +275,50 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayShortenedUrl(data) {
     input.value = `${data.domain}/${data.code}`;
     input.classList.remove("d-none");
-    shortenButton.classList.add("disabled");
-    folderSelect.classList.add("disabled");
     input.focus();
     input.select();
-    navigator.clipboard.writeText(input.value).then(() => {
-      copiedMsg.classList.remove("d-none");
-    });
+    copyToClipboard(input.value);
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => copiedMsg.classList.remove("d-none"))
+      .catch(() => {
+        // Clipboard API failed (e.g. permission denied): the URL stays
+        // selected so the user can still copy it manually.
+        input.select();
+      });
+  }
+
+  function hideMessages() {
+    copiedMsg.classList.add("d-none");
+    errorMsg.classList.add("d-none");
   }
 
   function showError(errorKey) {
-    errorMsg.textContent = browser.i18n.getMessage(errorKey);
+    showRawError(browser.i18n.getMessage(errorKey));
+  }
+
+  function showRawError(message) {
+    errorMsg.textContent = message;
     errorMsg.classList.remove("d-none");
+  }
+
+  async function getApiErrorMessage(error) {
+    if (!error.response) {
+      return null;
+    }
+
+    try {
+      const body = await error.response.json();
+      if (typeof body.detail === "string") {
+        return body.detail;
+      }
+    } catch {
+      // Body is not JSON: fall back to the generic error message.
+    }
+
+    return null;
   }
 });
