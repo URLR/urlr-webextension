@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.1] - 2026-10-27
+
+### Fixed
+
+- Add the `storage` permission required by `browser.storage.local`, without which the popup failed to initialize after the update.
+
 ## [2.2.0] - 2026-10-27
 
 ### Added
