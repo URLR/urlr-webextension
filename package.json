@@ -25,6 +25,7 @@
     "build": "webpack",
     "lint": "npx eslint popup/urlr.js",
     "lint:fix": "npx eslint popup/urlr.js --fix",
-    "prettier": "npx prettier --write ."
+    "prettier": "npx prettier --write .",
+    "prettier:check": "npx prettier --check ."
   }
 }

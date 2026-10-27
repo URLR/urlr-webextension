@@ -1,0 +1,4 @@
+# Generated files (kept in sync with .gitignore)
+addon/popup/urlr.js
+addon/browser-polyfill.js
+addon/manifest.json
